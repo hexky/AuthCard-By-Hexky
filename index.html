@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="card-container">
+        
+        <div id="login-section" class="card-section active">
+            <div class="card" id="card-login">
+                <div class="card-header">
+                    <div class="header-text">
+                        <h2>Login</h2>
+                    </div>
+                </div>
+
+                <form id="loginForm" novalidate>
+                    <div class="form-group" id="login-group-email">
+                        <label>Email Address</label>
+                        <div class="input-wrapper" data-tooltip="Masukkan alamat email yang valid">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <input type="email" id="login-email" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="error-message">Email tidak boleh kosong atau format salah.</div>
+                    </div>
+
+                    <div class="form-group" id="login-group-pass">
+                        <label>Password</label>
+                        <div class="input-wrapper" data-tooltip="Masukkan password akun Anda">
+                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                            <input type="password" id="login-password" placeholder="Masukkan password" required>
+                            <svg class="eye-toggle" id="toggle-login-pass" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        </div>
+                        <div class="error-message">Password tidak boleh kosong.</div>
+                    </div>
+
+                    <div class="form-options">
+                        <a href="#" onclick="event.preventDefault(); showToast('info', 'Fitur Lupa Password akan dikirim ke email Anda.');">Lupa Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        LOGIN
+                    </button>
+                </form>
+
+                <div class="divider">OR CONTINUE WITH</div>
+                <button type="button" class="btn btn-google" onclick="showToast('info', 'Simulasi Login Google');">
+                    <svg viewBox="0 0 48 48">
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                    </svg>
+                    Google
+                </button>
+
+                <div class="footer-text">
+                    Belum punya akun? <a onclick="switchCard('register')">Daftar Sekarang</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="register-section" class="card-section">
+            <div class="card" id="card-register">
+                <div class="card-header">
+                    <div class="header-text">
+                        <h2>Register</h2>
+                    </div>
+                </div>
+
+                <form id="registerForm" novalidate>
+                    <div class="form-group" id="reg-group-username">
+                        <label>Username</label>
+                        <div class="input-wrapper" data-tooltip="Pilih username unik tanpa spasi">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <input type="text" id="reg-username" placeholder="Username unik" required>
+                        </div>
+                        <div class="error-message">Username wajib diisi.</div>
+                    </div>
+
+                    <div class="form-group" id="reg-group-email">
+                        <label>Email Address</label>
+                        <div class="input-wrapper" data-tooltip="Gunakan email aktif untuk verifikasi">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <input type="email" id="reg-email" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="error-message">Email tidak valid atau kosong.</div>
+                    </div>
+
+                    <div class="form-group" id="reg-group-pass">
+                        <label>Password</label>
+                        <div class="input-wrapper" data-tooltip="Minimal 8 karakter dengan huruf & angka">
+                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                            <input type="password" id="reg-password" placeholder="Buat password" required>
+                            <svg class="eye-toggle" id="toggle-reg-pass" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        </div>
+                        <div class="error-message">Password minimal 8 karakter.</div>
+                    </div>
+
+                    <div class="form-group" id="reg-group-confirm">
+                        <label>Confirm Password</label>
+                        <div class="input-wrapper" data-tooltip="Harus sama dengan password di atas">
+                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                            <input type="password" id="reg-confirm" placeholder="Ulangi password" required>
+                            <svg class="eye-toggle" id="toggle-reg-confirm" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        </div>
+                        <div class="error-message">Konfirmasi password tidak cocok.</div>
+                    </div>
+
+                    <div class="terms-group" id="reg-group-terms">
+                        <input type="checkbox" id="reg-terms" required>
+                        <label for="reg-terms">
+                            Saya menyetujui <a href="#" onclick="event.preventDefault(); showToast('info', 'Menampilkan Syarat & Ketentuan.');">Terms of Service</a> dan <a href="#" onclick="event.preventDefault(); showToast('info', 'Menampilkan Kebijakan Privasi.');">Privacy Policy</a>.
+                        </label>
+                    </div>
+                    <div class="error-message" style="margin-top: -12px; margin-bottom: 12px; padding-left: 0; display: none;" id="terms-error">Anda harus menyetujui Terms & Privacy.</div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 5px;">
+                        REGISTER
+                    </button>
+                </form>
+
+                <div class="divider">OR SIGN UP WITH</div>
+                <button type="button" class="btn btn-google" onclick="showToast('info', 'Simulasi Register Google');">
+                    <svg viewBox="0 0 48 48">
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                    </svg>
+                    Google
+                </button>
+
+                <div class="footer-text">
+                    Sudah punya akun? <a onclick="switchCard('login')">Masuk Disini</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

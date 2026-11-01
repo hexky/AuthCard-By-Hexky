@@ -37,7 +37,7 @@ Iseng. Bosen lihat form login yang datar dan ngebosenin. Jadi coba bikin card ya
 
 Proyek ini 100% HTML/CSS/JS murni. Nggak butuh Node.js, Python, atau build tools.
 
-**Mau lihat versi jadinya?** 
+**Lihat Preview Disini** 
 Langsung buka: **[hexkyauthcard.vercel.app](https://hexkyauthcard.vercel.app)**
 
 **Mau jalanin di laptop sendiri?**
